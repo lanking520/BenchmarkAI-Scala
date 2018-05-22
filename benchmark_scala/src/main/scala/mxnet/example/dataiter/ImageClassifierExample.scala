@@ -17,11 +17,11 @@
 
 package mxnet.example.dataiter
 
-import ml.dmlc.mxnet.Shape
+import org.apache.mxnet.Shape
 import org.kohsuke.args4j.{CmdLineParser, Option}
 import org.slf4j.LoggerFactory
-import ml.dmlc.mxnet.{DType, DataDesc}
-import ml.dmlc.mxnet.infer._
+import org.apache.mxnet.{DType, DataDesc}
+import org.apache.mxnet.infer._
 
 import scala.collection.JavaConverters._
 import java.io.File

@@ -7,9 +7,9 @@ import java.net.URL
 import scala.io.Source
 import javax.imageio.ImageIO
 
-import ml.dmlc.mxnet._
-import ml.dmlc.mxnet.module.{FitParams, Module}
-import ml.dmlc.mxnet.io.NDArrayIter
+import org.apache.mxnet._
+import org.apache.mxnet.module.{FitParams, Module}
+import org.apache.mxnet.io.NDArrayIter
 import org.kohsuke.args4j.{CmdLineParser, Option}
 import org.slf4j.LoggerFactory
 
