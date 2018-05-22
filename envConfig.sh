@@ -11,6 +11,5 @@ cd ..
 git clone https://github.com/lanking520/BenchmarkAI-Scala.git
 cd BenchmarkAI-Scala
 mvn package
-cd bin
 bash bin/download.sh
 bash bin/new_scala.sh resnet152/resnet-152 kitten.jpg images/ 1
