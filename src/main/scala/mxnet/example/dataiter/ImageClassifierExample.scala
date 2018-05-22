@@ -25,6 +25,7 @@ import org.apache.mxnet.infer._
 
 import scala.collection.JavaConverters._
 import java.io.File
+import scala.collection.mutable.ListBuffer
 
 /**
   * Example showing usage of Infer package to do inference on resnet-152 model
@@ -106,7 +107,6 @@ for (i <- 1 to numRun) {
   def main(args: Array[String]): Unit = {
     val inst = new ImageClassifierExample
     val parser: CmdLineParser = new CmdLineParser(inst)
-    try {
       parser.parseArgument(args.toList.asJava)
 
       val modelPathPrefix = if (inst.modelPathPrefix == null) System.getenv("MXNET_DATA_DIR")
@@ -121,26 +121,8 @@ for (i <- 1 to numRun) {
       val numRun = inst.numRun.toString().toInt
 
 //      runInferenceOnSingleImage(modelPathPrefix, inputImagePath, numRun)
-
-
        runInferenceOnBatchOfImage(modelPathPrefix, inputImageDir, numRun)
 
-
-//      val d = new File(inputImageDir)
-//      val filenames = d.listFiles.filter(_.isFile).toList
-//
-//      // Printing filename and inference class with top 5 probabilities
-//      for ((f, inferOp) <- (filenames zip batchOutput)) {
-//        printf("Input image %s ", f)
-//        printf("Class with probability =%s \n", inferOp)
-//      }
-    } catch {
-      case ex: Exception => {
-        logger.error(ex.getMessage, ex)
-        parser.printUsage(System.err)
-        sys.exit(1)
-      }
-    }
   }
 }
 

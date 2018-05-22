@@ -10,7 +10,7 @@ make scalatest
 cd ..
 git clone https://github.com/lanking520/BenchmarkAI-Scala.git
 cd BenchmarkAI-Scala
-mvn clean package
+mvn package
 cd bin
 bash download.sh
 bash bin/old_scala.sh resnet/resnet-152 kitten.jpg images/ resnet/synset.txt 1

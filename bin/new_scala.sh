@@ -12,7 +12,7 @@ INPUT_DIR=$3
 # number of runs
 NUM_RUN=$4
 
-CLASSPATH=$CLASSPATH:/home/ubuntu/incubator-mxnet/scala-package/assembly/linux-x86_64-cpu/target/*:$CLASSPATH:/home/ubuntu/BenchmarkAI_Scala/target/*:$CLASSPATH:/home/ubuntu/BenchmarkAI_Scala/target/classes/lib/*:$CLASSPATH:/home/ubuntu/incubator-mxnet/scala-package/infer/target/*
+CLASSPATH=$CLASSPATH:/home/ubuntu/incubator-mxnet/scala-package/assembly/linux-x86_64-cpu/target/*:$CLASSPATH:/home/ubuntu/BenchmarkAI-Scala/target/*:$CLASSPATH:/home/ubuntu/BenchmarkAI-Scala/target/classes/lib/*:$CLASSPATH:/home/ubuntu/incubator-mxnet/scala-package/infer/target/*
 java -Xmx8G  -cp $CLASSPATH \
   mxnet.example.dataiter.ImageClassifierExample \
   	--model-path-prefix $MODEL_PATH_PREFIX \
