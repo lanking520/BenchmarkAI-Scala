@@ -13,4 +13,4 @@ cd BenchmarkAI-Scala
 mvn clean package
 cd bin
 bash download.sh
-bash new_scala.sh
+bash bin/old_scala.sh resnet/resnet-152 kitten.jpg images/ resnet/synset.txt 1

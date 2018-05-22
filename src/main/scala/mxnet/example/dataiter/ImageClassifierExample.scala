@@ -71,16 +71,36 @@ object ImageClassifierExample {
         ImageClassifier(modelPathPrefix, inputDescriptor)
 
     // Loading batch of images from the directory path
-    val imgList = ImageClassifier.loadInputBatch(inputImageDir)
+    val batchFiles = generateBatches(inputImageDir, 20)
+    var outputList = IndexedSeq[IndexedSeq[(String, Float)]]()
 
 for (i <- 1 to numRun) {
-      val startTimeSingle = System.nanoTime
-    // Running inference on batch of images loaded in previous step
-    val outputList = imgClassifier.classifyImageBatch(imgList, Some(5))
-
+    val startTimeSingle = System.nanoTime
+    for (batchFile <- batchFiles) {
+      val imgList = ImageClassifier.loadInputBatch(batchFile)
+      // Running inference on batch of images loaded in previous step
+      outputList ++= imgClassifier.classifyImageBatch(imgList, Some(5))
+    }
     val estimatedTimeSingle = (System.nanoTime() - startTimeSingle)
       printf("Iteration: %d, Time: %d \n",i, estimatedTimeSingle)
-}
+  }
+  }
+
+  def generateBatches(inputImageDirPath: String, batchSize: Int = 100): List[List[String]] = {
+    val dir = new File(inputImageDirPath)
+    require(dir.exists && dir.isDirectory,
+      "input image directory: %s not found".format(inputImageDirPath))
+    val output = ListBuffer[List[String]]()
+    var batch = ListBuffer[String]()
+    for (imgFile: File <- dir.listFiles()){
+      batch += imgFile.getPath
+      if (batch.length == batchSize) {
+        output += batch.toList
+        batch = ListBuffer[String]()
+      }
+    }
+    output += batch.toList
+    output.toList
   }
 
   def main(args: Array[String]): Unit = {

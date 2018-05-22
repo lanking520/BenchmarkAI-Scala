@@ -14,7 +14,7 @@ SYNSET=$4
 # number of runs
 NUM_RUN=$5
 
-CLASSPATH=$CLASSPATH:/home/ubuntu/incubator-mxnet/scala-package/assembly/linux-x86_64-cpu/target/*:$CLASSPATH:/home/ubuntu/benchmark_scala1/target/*:$CLASSPATH:/home/ubuntu/benchmark_scala1/target/classes/lib/*
+CLASSPATH=$CLASSPATH:/home/ubuntu/incubator-mxnet/scala-package/assembly/linux-x86_64-cpu/target/*:$CLASSPATH:/home/ubuntu/BenchmarkAI_Scala/target/*:$CLASSPATH:/home/ubuntu/BenchmarkAI_Scala/target/classes/lib/*
 java -Xmx16G -cp $CLASSPATH \
   mxnet.example.dataiter.BenchmarkResnet \
     	--model-path-prefix $MODEL_PATH_PREFIX \
